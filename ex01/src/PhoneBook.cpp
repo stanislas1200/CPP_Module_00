@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sgodin <sgodin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/23 14:46:38 by sgodin            #+#    #+#             */
+/*   Updated: 2023/09/23 14:46:38 by sgodin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/PhoneBook.hpp"
 #include "../include/Contact.hpp"
 
@@ -22,12 +34,23 @@ void PhoneBook::search_data()
 		std::cout << B "   " BB Y "Index      " B "|" Y "First Name" B "|" Y "Last Name " B "|" Y "Nickname  " C << std::endl;
 		for (int i = 0; i < 8 && i < this->i; i++)
 			this->contacts[i].print_contact_line(i);
-		// std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		std::cout << BO "Contact index ?:" C;
 		std::cin.clear();
-		std::cin >> i; // NEED CHECK FOR INT
+		std::cin >> i;
+		if (std::cin.eof())
+		{
+			std::cerr << R "EOF" C << std::endl;
+			exit(1);
+		}
 		if (i < 1 || i > 8 || i > this->i)
+		{
 			std::cout << D R "Invalid index" C ": " Y << i << " " C << std::endl;
+			if (!std::cin)
+			{
+				std::cin.clear();
+				std::cin.ignore();
+			}
+		}
 	}
 	std::cout << D;
 	this->contacts[i - 1].print_contact();
@@ -44,7 +67,7 @@ int main()
 		std::cin.clear();
 		std::cin >> cmd;
 		if (std::cin.eof())
-			return (std::cout << R "EOF" C << std::endl, 0);
+			return (std::cerr << R "EOF" C << std::endl, 0);
 		else if (cmd == "ADD")
 			phoneBook.add_data();
 		else if (cmd == "SEARCH")
