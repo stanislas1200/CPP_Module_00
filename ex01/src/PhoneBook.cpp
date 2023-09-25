@@ -13,6 +13,8 @@
 #include "../include/PhoneBook.hpp"
 #include "../include/Contact.hpp"
 
+PhoneBook::PhoneBook() : i(0) {}
+
 void PhoneBook::add_data()
 {
 	std::cout << D;

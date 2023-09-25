@@ -21,7 +21,7 @@ class PhoneBook
 		int i;
 		Contact contacts[8];
 	public:
-		PhoneBook() : i(0) {};
+		PhoneBook();
 		void add_data();
 		void search_data();
 };
