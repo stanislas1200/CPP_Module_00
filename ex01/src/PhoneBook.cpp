@@ -18,6 +18,8 @@ PhoneBook::PhoneBook() : i(0) {}
 void PhoneBook::add_data()
 {
 	std::cout << D;
+	if (i != 0 && !(i % 8))
+		i = 8;
 	this->contacts[this->i++ % 8].add_data();
 }
 

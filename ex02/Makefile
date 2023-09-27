@@ -16,7 +16,7 @@ INCL = include/Account.hpp
 
 NAME =  Account
 
-GCC = g++ -std=c++98 #-Wall -Wextra -Werror
+GCC = g++ -std=c++98 -Wall -Wextra -Werror
 
 OBJS_DIR = ./objects/
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.cpp=.o))

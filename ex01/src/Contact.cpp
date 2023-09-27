@@ -56,6 +56,7 @@ void Contact::add_data()
 	this->firstName = get_input("Enter first name: ");
 	this->lastName = get_input("Enter last name: ");
 	this->nickName = get_input("Enter nickname: ");
+	phoneNumber.erase();
 	while (this->phoneNumber.empty())
 	{
 		this->phoneNumber = get_input("Enter phone number: ");
